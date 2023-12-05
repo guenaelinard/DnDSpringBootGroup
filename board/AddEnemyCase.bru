@@ -1,0 +1,18 @@
+meta {
+  name: AddEnemyCase
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8083/enemy
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "id":3,
+    "name":"Gobelin"
+  }
+}
