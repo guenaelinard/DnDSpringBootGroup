@@ -30,7 +30,7 @@ public class BoardController {
 
     @PostMapping("/hero/{id}")
     public Board addHero(@PathVariable int id) {
-        String url = "http://172.22.114.100:9091/players/"+ id;
+        String url = "http://172.22.114.100:9091/players/" + id;
         url = "https://mocki.io/v1/79a85077-896d-4bcc-a402-c17f8a7268b2"; // URL DE TEST EN ATTENDANT...
         HeroCase hero = restTemplate.getForObject(url, HeroCase.class);
         board.addElementToBoard(hero);
@@ -38,10 +38,12 @@ public class BoardController {
     }
 
     @PostMapping("/enemy")
-    public Board addEnemies(@RequestBody EnemyCase enemy) {
+    public Board addEnemies(@RequestBody EnemyCase enemy, @PathVariable int numTiles) {
+        for (int i = 0; i < numTiles; i++) {
 //        String url = "http://172.22.114.100:9091/players";
 //        return restTemplate.getForObject(url, List.class);
-        board.addElementToBoard(enemy);
+            board.addElementToBoard(enemy);
+        }
         return board;
     }
 
@@ -58,14 +60,18 @@ public class BoardController {
 //        boardDAO.save(board);
 //    }
 
+    public void createBoard() {
+        addEmptyCase(32);
+        addEnemies("Gobbo");
+    }
+
 
     @Operation(summary = "Gets a board by its id")
     @GetMapping("/board/{id}")
     public JSONPObject showBoard(@Valid @PathVariable int id) {
-       String url = "https://mocki.io/v1/11445ed3-5a21-4d27-8144-bb71f7863e20 ";
-               return restTemplate.getForObject(url, JSONPObject.class);
+        String url = "https://mocki.io/v1/11445ed3-5a21-4d27-8144-bb71f7863e20 ";
+        return restTemplate.getForObject(url, JSONPObject.class);
     }
-
 
 
 //    @PostMapping("/board")

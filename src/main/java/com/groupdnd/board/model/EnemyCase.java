@@ -4,13 +4,6 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 public class EnemyCase extends EmptyCase {
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     private String name;
 
@@ -19,4 +12,11 @@ public class EnemyCase extends EmptyCase {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
