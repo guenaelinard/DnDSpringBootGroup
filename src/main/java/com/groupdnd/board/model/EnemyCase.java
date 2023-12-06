@@ -1,16 +1,19 @@
 package com.groupdnd.board.model;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 public class EnemyCase extends EmptyCase {
 
 
     private String name;
 
-    public EnemyCase(int id, String name) {
+    //---------------------------------------- CONSTRUCTORS -----------------------------------
+
+    public EnemyCase(int id) {
         super(id);
-        this.name = name;
+        this.name = "enemy";
     }
+
+    //-------------------------------- GET/SET --------------------------------
 
     public String getName() {
         return name;

@@ -7,26 +7,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Schema(description = "ID of the given board",
-        name = "id",
-        type = "String",
-        example = "1, 2, 3, etc.")
-public class Board implements Interaction {
+public class Board {
 
+    @Schema(description = "ID of the given board",
+            name = "id",
+            type = "String",
+            example = "1, 2, 3, etc.")
     private int id;
     private final List<EmptyCase> board;
 
     //---------------------------------------- CONSTRUCTORS -----------------------------------
 
-    public Board(){
+    public Board() {
         board = new ArrayList<EmptyCase>();
 
     }
+
     //-------------------------------- METHODS --------------------------------
-    public void addElementToBoard(EmptyCase box){
+    public void addElementToBoard(EmptyCase box) {
         this.board.add(box);
     }
 
+    public void addEnemies(EnemyCase enemyCase,int numTiles) {
+        for (int i = 0; i < numTiles; i++) {
+            this.addElementToBoard(new EnemyCase(numTiles));
+        }
+    }
+
+    public void addEmptyCase(int numTiles) {
+        for (int i = 0; i < numTiles; i++) {
+            this.addElementToBoard(new EmptyCase(i));
+        }
+    }
 
     //-------------------------------- GET/SET --------------------------------
 
